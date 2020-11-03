@@ -12,7 +12,7 @@ class TimesheetDetails(models.Model):
     
     @api.onchange('time_begin', 'time_end')
     def onchange_hours_start_stop(self):
-        if time_begin & time_end:
+        if time_begin and time_end:
             if time_begin < time_end:
                 return
             self.unit_amount = (time_end - time_begin).seconds / 3600
