@@ -6,3 +6,7 @@
 	path = timesheet
 	url = git@github.com:OCA/timesheet.git
 	branch = 13.0
+[submodule "project"]
+	path = project
+	url = git@github.com:OCA/project.git
+	branch = 13.0
