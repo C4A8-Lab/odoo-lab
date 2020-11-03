@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* hr_timesheet_activity_begin_end
+# 	* hr_timesheet_activity_begin_end
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,21 +31,20 @@ msgid "End Hour"
 msgstr ""
 
 #. module: hr_timesheet_activity_begin_end
-#: code:addons/hr_timesheet_activity_begin_end/models/account_analytic_line.py:50
+#: code:addons/hr_timesheet_activity_begin_end/models/account_analytic_line.py:0
 #, python-format
 msgid "Lines can't overlap:\n"
-""
 msgstr ""
 
 #. module: hr_timesheet_activity_begin_end
-#: code:addons/hr_timesheet_activity_begin_end/models/account_analytic_line.py:26
+#: code:addons/hr_timesheet_activity_begin_end/models/account_analytic_line.py:0
 #, python-format
 msgid "The beginning hour (%s) must precede the ending hour (%s)."
 msgstr ""
 
 #. module: hr_timesheet_activity_begin_end
-#: code:addons/hr_timesheet_activity_begin_end/models/account_analytic_line.py:36
+#: code:addons/hr_timesheet_activity_begin_end/models/account_analytic_line.py:0
 #, python-format
-msgid "The duration (%s) must be equal to the difference between the hours (%s)."
+msgid ""
+"The duration (%s) must be equal to the difference between the hours (%s)."
 msgstr ""
-
