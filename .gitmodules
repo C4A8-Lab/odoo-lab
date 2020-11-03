@@ -10,6 +10,3 @@
 	path = project-reporting
 	url = git@github.com:OCA/project-reporting.git
 	branch = 13.0
-[submodule "project"]
-	path = project
-	url = git@github.com:OCA/project.git
