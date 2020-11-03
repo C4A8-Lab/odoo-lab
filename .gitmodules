@@ -13,4 +13,3 @@
 [submodule "project"]
 	path = project
 	url = git@github.com:OCA/project.git
-	branch = 13.0
