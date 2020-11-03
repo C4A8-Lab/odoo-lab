@@ -1,3 +1,8 @@
 [submodule "web"]
 	path = web
 	url = git@github.com:OCA/web.git
+	branch = 13.0
+[submodule "timesheet"]
+	path = timesheet
+	url = git@github.com:OCA/timesheet.git
+	branch = 13.0
