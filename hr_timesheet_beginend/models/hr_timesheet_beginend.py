@@ -4,7 +4,7 @@ from odoo import models, fields, api
 from odoo.tools.float_utils import float_compare
 
 class TimesheetDetails(models.Model):
-    _inherit = 'project.task.create.timesheet'
+    _inherit = 'account.analytic.line'
 
     begin_timestamp = fields.Datetime(string='Begin')
     end_timestamp = fields.Datetime(string='End')
