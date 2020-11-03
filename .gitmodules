@@ -10,3 +10,7 @@
 	path = timesheet
 	url = git@github.com:OCA/timesheet.git
 	branch = 13.0
+[submodule "project-reporting"]
+	path = project-reporting
+	url = git@github.com:OCA/project-reporting.git
+	branch = 13.0
