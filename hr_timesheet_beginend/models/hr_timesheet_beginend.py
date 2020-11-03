@@ -6,14 +6,13 @@ from odoo.tools.float_utils import float_compare
 class TimesheetDetails(models.Model):
     _inherit = 'account.analytic.line'
 
-    begin_timestamp = fields.Datetime(string='Begin')
-    end_timestamp = fields.Datetime(string='End')
+    time_begin = fields.Time(string='Begin')
+    time_end = fields.Time(string='End')
 
     
-    @api.onchange('begin_timestamp', 'end_timestamp')
+    @api.onchange('time_begin', 'time_end')
     def onchange_hours_start_stop(self):
-#        start = timedelta(hours=self.time_start)
-#        stop = timedelta(hours=self.time_stop)
-        if stop < start:
-            return
-        self.unit_amount = (stop - start).seconds / 3600
+        if time_begin & time_end:
+            if time_begin < time_end:
+                return
+            self.unit_amount = (time_end - time_begin).seconds / 3600

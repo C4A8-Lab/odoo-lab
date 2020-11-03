@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="hr_timesheet_sheet_form" model="ir.ui.view">
-        <field name="name">account.analytic.line.form.beginend</field>
+        <field name="name">account.analytic.line.form</field>
         <field name="model">account.analytic.line</field>
         <field name="inherit_id"
-            ref="hr_timesheet.hr_timesheet_line_form"/>
+            ref="account.analytic.line.form"/>
         <field name="arch" type="xml">
             <xpath
                expr="//field[@name='amount']"
                position="before">
-                <field name="begin_timestamp"/>
-                <field name="end_timestamp" />
+                <field name="time_begin"/>
+                <field name="time_end" />
             </xpath>
             <xpath
               expr="//field[@name='amount']"
               position="before">
-                <field name="begin_timestamp"/>
-                <field name="end_timestamp"/>
+                <field name="time_begin"/>
+                <field name="time_end"/>
             </xpath>
         </field>
     </record>
