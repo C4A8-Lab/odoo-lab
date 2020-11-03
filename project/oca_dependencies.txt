@@ -1,3 +1,0 @@
-project-reporting
-timesheet
-web
