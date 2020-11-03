@@ -6,17 +6,14 @@
         <field name="inherit_id"
             ref="hr_timesheet.hr_timesheet_line_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='id']/tree" position="attributes">
-                <attribute name="default_order">date, begin_timestamp, id</attribute>
-            </xpath>
             <xpath
-               expr="//field[@name='id']/tree/field[@name='unit_amount']"
+               expr="//field[@name='unit_amount']"
                position="before">
                 <field name="begin_timestamp"/>
                 <field name="end_timestamp" />
             </xpath>
             <xpath
-              expr="//field[@name='id']/form/group/field[@name='unit_amount']"
+              expr="//field[@name='unit_amount']"
               position="before">
                 <field name="begin_timestamp"/>
                 <field name="end_timestamp"/>
