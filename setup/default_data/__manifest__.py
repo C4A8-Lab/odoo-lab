@@ -3,14 +3,14 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Glueckkanja-gab autosetup",
+    "name": "Glueckkanja-gab default data",
     "version": "14.0.0.0.0",
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
     "category": "Human Resources",
-    "depends": ["hr_timesheet_activity_begin_end", "account", "sale", "hr"],
+    "depends": [],
     "website": "https://github.com/OCA/timesheet",
-    "data": [],
+    "data": ["data/products_data.xml"],
     "installable": True,
     "auto_install": False,
 }

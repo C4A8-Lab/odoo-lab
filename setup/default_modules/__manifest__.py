@@ -3,7 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Glueckkanja-gab autosetup",
+    "name": "Glueckkanja-gab default modules",
     "version": "14.0.0.0.0",
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
