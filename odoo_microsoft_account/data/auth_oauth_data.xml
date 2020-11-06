@@ -1,36 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
     <data noupdate="1">
-        <record id="provider_microsoft" model="auth.oauth.provider">
-            <field name="name">Microsoft OAuth2 Common</field>
-            <field name="client_id"></field>
-            <field name="secret_key"></field>
-            <field name="enabled">False</field>
-            <!-- Note: For the Security Reasons Microsoft change there
-            AuthEndpoint if note work then please look at the API Explorer
-            for API Change -->
-            <field name="auth_endpoint">https://login.microsoftonline.com/common/oauth2/v2.0/authorize</field>
-            <field name="scope">offline_access User.Read Mail.Read User.ReadWrite.All Contacts.ReadWrite Calendars.ReadWrite</field>
-            <field name="validation_endpoint">https://login.microsoftonline.com/common/oauth2/v2.0/token</field>
-            <field name="data_endpoint">graph.microsoft.com</field>
-            <field name="body">Log in with Microsoft</field>
-        </record>
-		<record id="provider_microsoft_c4a8" model="auth.oauth.provider">
-            <field name="name">Microsoft OAuth2 c4a8</field>
-            <field name="client_id"></field>
-            <field name="secret_key"></field>
-            <field name="enabled">False</field>
-            <!-- Note: For the Security Reasons Microsoft change there
-            AuthEndpoint if note work then please look at the API Explorer
-            for API Change -->
-            <field name="auth_endpoint">https://login.microsoftonline.com/glueckkanja-gab.com/oauth2/v2.0/authorize</field>
-            <field name="scope">User.Read</field>
-            <field name="validation_endpoint">https://login.microsoftonline.com/glueckkanja-gab.com/oauth2/v2.0/token</field>
-            <field name="data_endpoint">graph.microsoft.com</field>
-            <field name="body">Log in with Microsoft</field>
-        </record>
-		<record id="provider_microsoft_lab" model="auth.oauth.provider">
-            <field name="name">Microsoft OAuth2 LAB</field>
+		<record id="provider_microsoft" model="auth.oauth.provider">
+            <field name="name">Microsoft OAuth2</field>
             <field name="client_id"></field>
             <field name="secret_key"></field>
             <field name="enabled">False</field>
@@ -40,20 +12,6 @@
             <field name="auth_endpoint">https://login.microsoftonline.com/cldgkm.de/oauth2/v2.0/authorize</field>
             <field name="scope">User.Read</field>
             <field name="validation_endpoint">https://login.microsoftonline.com/cldgkm.de/oauth2/v2.0/token</field>
-            <field name="data_endpoint">graph.microsoft.com</field>
-            <field name="body">Log in with Microsoft</field>
-        </record>
-		<record id="provider_microsoft_lab_all" model="auth.oauth.provider">
-            <field name="name">Microsoft OAuth2 LAB All</field>
-            <field name="client_id"></field>
-            <field name="secret_key"></field>
-            <field name="enabled">False</field>
-            <!-- Note: For the Security Reasons Microsoft change there
-            AuthEndpoint if note work then please look at the API Explorer
-            for API Change -->
-            <field name="auth_endpoint">https://login.microsoftonline.com/cldgkm.de/oauth2/v2.0/authorize</field>
-            <field name="scope">offline_access User.Read Mail.Read User.ReadWrite.All Contacts.ReadWrite Calendars.ReadWrite</field>
-            <field name="validation_endpoint">ttps://login.microsoftonline.com/cldgkm.de/oauth2/v2.0/token</field>
             <field name="data_endpoint">graph.microsoft.com</field>
             <field name="body">Log in with Microsoft</field>
         </record>
