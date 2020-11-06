@@ -30,7 +30,7 @@ class OAuthLogin(Home):
         base_url = request.env['ir.config_parameter'].sudo().get_param(
             'web.base.url')
         for provider in providers:
-            if provider.get('id') == provider_microsoft.id:
+            if provider.get('id').startswith(provider_microsoft.id):
                 return_url = base_url + '/auth_oauth/microsoft/signin'
                 params = dict(
                     client_id=provider['client_id'],
