@@ -8,7 +8,7 @@
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
     "category": "Human Resources",
-    "depends": ["hr_timesheet_activity_begin_end", "account", "sale", "hr"],
+    "depends": ["hr_timesheet_activity_begin_end", "account", "sale", "hr", "odoo_microsoft_account"],
     "website": "https://github.com/OCA/timesheet",
     "data": [],
     "installable": True,
