@@ -10,5 +10,5 @@ class BaseConfigSettings(models.TransientModel):
     auth_oauth_microsoft_enabled = fields.Boolean(
         'Allow users to sign in with Microsoft', default=True)
     auth_oauth_microsoft_client_id = fields.Char(
-        'Client ID'
+        'Client OID'
     )
