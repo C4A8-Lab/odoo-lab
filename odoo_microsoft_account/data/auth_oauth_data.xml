@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
     <data noupdate="1">
-        <record id="provider_microsoft" model="auth.oauth.provider">
+        <record id="provider_microsoft_c4a8_all" model="auth.oauth.provider">
             <field name="name">Microsoft OAuth2 c4a8 All</field>
             <field name="client_id"></field>
             <field name="secret_key"></field>
@@ -15,7 +15,7 @@
             <field name="data_endpoint">graph.microsoft.com</field>
             <field name="body">Log in with Microsoft</field>
         </record>
-		<record id="provider_microsoft" model="auth.oauth.provider">
+		<record id="provider_microsoft_c4a8" model="auth.oauth.provider">
             <field name="name">Microsoft OAuth2 c4a8</field>
             <field name="client_id"></field>
             <field name="secret_key"></field>
@@ -29,7 +29,7 @@
             <field name="data_endpoint">graph.microsoft.com</field>
             <field name="body">Log in with Microsoft</field>
         </record>
-		<record id="provider_microsoft" model="auth.oauth.provider">
+		<record id="provider_microsoft_lab" model="auth.oauth.provider">
             <field name="name">Microsoft OAuth2 LAB</field>
             <field name="client_id"></field>
             <field name="secret_key"></field>
@@ -43,7 +43,7 @@
             <field name="data_endpoint">graph.microsoft.com</field>
             <field name="body">Log in with Microsoft</field>
         </record>
-		<record id="provider_microsoft" model="auth.oauth.provider">
+		<record id="provider_microsoft_lab_all" model="auth.oauth.provider">
             <field name="name">Microsoft OAuth2 LAB All</field>
             <field name="client_id"></field>
             <field name="secret_key"></field>
