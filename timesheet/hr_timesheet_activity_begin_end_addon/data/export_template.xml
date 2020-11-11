@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="export_provision" model="ir.exports">
+        <field name="name">Provision</field>
+        <field name="resource">account.analytic.line</field>
+    </record>
+
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">date</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">employee_id</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">project_id</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">task_id</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">name</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">time_start</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">time_end</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">unit_amount</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">so_line/salesman_id/employee</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">task_id/sale_line_id</field>
+        <field name="export_id">export_provision</field>
+    </record>
+    <record id="export_provision_line_1" model="ir.exports.line">
+        <field name="name">task_id/sale_line_id/price_unit</field>
+        <field name="export_id">export_provision</field>
+    </record>
+</odoo>
