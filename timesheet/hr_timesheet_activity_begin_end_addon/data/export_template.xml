@@ -30,7 +30,7 @@
         <field name="export_id" ref="export_provision" />
     </record>
     <record id="export_provision_line_7" model="ir.exports.line">
-        <field name="name">time_end</field>
+        <field name="name">time_stop</field>
         <field name="export_id" ref="export_provision" />
     </record>
     <record id="export_provision_line_8" model="ir.exports.line">
