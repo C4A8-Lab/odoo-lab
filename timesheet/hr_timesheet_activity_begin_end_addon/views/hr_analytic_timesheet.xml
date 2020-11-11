@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="timesheet_view_tree_sale" model="ir.ui.view">
-        <field name="name">hr.analytic.timesheet.tree</field>
+        <field name="name">account.analytic.line.view.tree.with.allow.billable</field>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="sale_timesheet.timesheet_view_tree_sale" />
+        <field name="inherit_id" ref="account.analytic.line.view.tree.with.allow.billable" />
         <field name="arch" type="xml">
             <field name="unit_amount" position="before">
                 <field name="time_start" widget="float_time" />
