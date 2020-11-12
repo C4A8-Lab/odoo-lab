@@ -10,7 +10,10 @@
     "category": "Human Resources",
     "depends": [],
     "website": "https://github.com/OCA/timesheet",
-    "data": ["data/products_data.xml"],
+    "data": [
+        "data/ir.exports.csv",
+        "data/ir.exports.line.csv"
+    ],
     "installable": True,
     "auto_install": False,
 }
