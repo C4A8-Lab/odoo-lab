@@ -3,16 +3,15 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Glueckkanja-gab default data",
+    "name": "Timesheet Activities - Begin/End Hours - Addon",
     "version": "14.0.0.0.0",
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
     "category": "Human Resources",
-    "depends": [],
-    "website": "https://github.com/OCA/timesheet",
+    "depends": ["hr_timesheet_activity_begin_end"],
+    "website": "",
     "data": [
-        "data/ir.exports.csv",
-        "data/ir.exports.line.csv"
+        "views/hr_analytic_timesheet.xml"
     ],
     "installable": True,
     "auto_install": False,
