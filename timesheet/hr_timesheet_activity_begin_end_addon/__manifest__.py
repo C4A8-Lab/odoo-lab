@@ -10,7 +10,7 @@
     "category": "Human Resources",
     "depends": ["hr_timesheet_activity_begin_end"],
     "website": "",
-    "data": ["views/hr_analytic_timesheet.xml", "data/export_template.xml"],
+    "data": ["views/hr_analytic_timesheet.xml", "data/export_template.xml", "data/ir.exports.csv"],
     "installable": True,
     "auto_install": False,
 }
