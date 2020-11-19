@@ -34,9 +34,9 @@ class AccountAnalyticLine(models.Model):
             
     def _update_datetime_start(self):
         for rec in self:
-            rec.time_start = (rec.datetime_start.time - time(0)).hours
+            rec.time_start = (rec.datetime_start.time() - time(0)).hours
          
     def _update_datetime_stop(self):
         for rec in self:
-            rec.time_stop = (rec.datetime_stop.time - time(0)).hours
+            rec.time_stop = (rec.datetime_stop.time() - time(0)).hours
  
