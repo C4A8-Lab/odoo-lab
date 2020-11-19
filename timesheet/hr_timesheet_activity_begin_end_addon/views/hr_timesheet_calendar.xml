@@ -4,7 +4,6 @@
         <field name="name">project.task.form.inherited.beginend.calendar</field>
         <field name="model">project.task</field>
         <field name="arch" type="xml">
-            <?xml version="1.0"?>
             <calendar date_start="datetime_start" date_stop="datetime_stop" string="Default calendar view for account.analytic.line"></calendar>
         </field>
     </record>
