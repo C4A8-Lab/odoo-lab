@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_task_timesheet_calendar" model="ir.ui.view">
-        <field name="name">project.task.calendar.beginend</field>
-        <field name="model">project.task</field>
+    <record id="account_analytic_line_calendar_timesheet" model="ir.ui.view">
+        <field name="name">account.analytic.line.view.calendar.beginend</field>
+        <field name="model">account.analytic.line</field>
         <field name="arch" type="xml">
-            <calendar date_start="datetime_start" date_stop="datetime_stop" string="Default calendar view for account.analytic.line"></calendar>
+            <calendar date_start="datetime_start" date_stop="datetime_stop" string="Default calendar view for account.analytic.line" event_open_popup="true" mode="week">
+                <field name="display_name"/>
+            </calendar>
         </field>
     </record>
 </odoo>
