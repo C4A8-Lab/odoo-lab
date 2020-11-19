@@ -33,11 +33,10 @@ class AccountAnalyticLine(models.Model):
             _logger.info(rec.datetime_stop)
             
     def _update_datetime_start(self):
-        _logger.debug("_update_datetime_start triggered")
-        _logger.warning("_update_datetime_start triggered")
-        _logger.error("_update_datetime_start triggered")
-        
+        for rec in self:
+            rec.time_start = (rec.datetime_start - rec.date ).hours
+         
     def _update_datetime_stop(self):
-        _logger.debug("_update_datetime_stop triggered")
-        _logger.warning("_update_datetime_stop triggered")
-        _logger.error("_update_datetime_stop triggered")
+        for rec in self:
+            rec.time_stop = (rec.datetime_stop - rec.date ).hours
+ 
