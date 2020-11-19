@@ -20,8 +20,7 @@
         "account_accountant", 
         "sale_subscription",
         "timesheet_grid",
-        "l10n_de_skr03",
-        "sale_quotation_builder"
+        "l10n_de_skr03"
     ],
     "website": "https://github.com/OCA/timesheet",
     "data": [],

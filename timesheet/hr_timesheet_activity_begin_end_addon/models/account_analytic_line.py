@@ -18,23 +18,21 @@ class AccountAnalyticLine(models.Model):
     datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="", string="Begin", store=False)
     datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", string="End", store=False)
 
-    @api.multi
+    @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
         start = timedelta(hours=self.time_start)
         self.datetime_start = self.date + start
     
-    @api.multi
+    @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
         stop = timedelta(hours=self.time_stop)
         self.datetime_stop = self.date + stop
         
-    @api.multi
-    def _update_datetime_start(self):
+     def _update_datetime_start(self):
         _logger.debug("_update_datetime_start triggered")
         _logger.warning("_update_datetime_start triggered")
         _logger.error("_update_datetime_start triggered")
         
-    @api.multi
     def _update_datetime_stop(self):
         _logger.debug("_update_datetime_stop triggered")
         _logger.warning("_update_datetime_stop triggered")
