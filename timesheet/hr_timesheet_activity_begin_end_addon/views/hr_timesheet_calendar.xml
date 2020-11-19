@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_task_calendar" model="ir.ui.view">
+    <record id="view_task_timesheet_calendar" model="ir.ui.view">
         <field name="name">project.task.calendar.beginend</field>
         <field name="model">project.task</field>
         <field name="arch" type="xml">

@@ -9,6 +9,7 @@
     "license": "AGPL-3",
     "category": "Human Resources",
     "depends": [
+        "l10n_de_skr03",
         "hr_timesheet_activity_begin_end", 
         "account", 
         "sale_management", 
@@ -20,7 +21,6 @@
         "account_accountant", 
         "sale_subscription",
         "timesheet_grid",
-        "l10n_de_skr03"
     ],
     "website": "https://github.com/OCA/timesheet",
     "data": [],
