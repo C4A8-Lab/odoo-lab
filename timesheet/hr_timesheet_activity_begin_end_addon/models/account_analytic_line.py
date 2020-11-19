@@ -2,7 +2,7 @@
 # Copyright 2017 Tecnativa, S.L. - Luis M. Ontalba
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from datetime import timedelta
+from datetime import timedelta, combine, time
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -23,13 +23,13 @@ class AccountAnalyticLine(models.Model):
         for rec in self:
 
             start = timedelta(hours=rec.time_start)
-            rec.datetime_start = datetime.datetime(rec.date) + start
+            rec.datetime_start = combine(rec.date, time(0)) + start
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
-            rec.datetime_stop = datetime.datetime(rec.date) + stop
+            rec.datetime_stop = combine(rec.date, time(0)) + stop
             _logger.info(rec.datetime_stop)
             
     def _update_datetime_start(self):
