@@ -28,7 +28,7 @@ class AccountAnalyticLine(models.Model):
         stop = timedelta(hours=self.time_stop)
         self.datetime_stop = self.date + stop
         
-     def _update_datetime_start(self):
+    def _update_datetime_start(self):
         _logger.debug("_update_datetime_start triggered")
         _logger.warning("_update_datetime_start triggered")
         _logger.error("_update_datetime_start triggered")
