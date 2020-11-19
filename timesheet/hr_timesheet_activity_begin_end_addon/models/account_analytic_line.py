@@ -15,8 +15,8 @@ class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
     _order = "date desc, time_start desc, id desc"
 
-    datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="",string="Begin", store=False)
-    datetime_stop = fields.Datetime(ompute= "_compute_datetime_stop"string="End", store=False)
+    datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="", string="Begin", store=False)
+    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", string="End", store=False)
 
     @api.multi
     def _compute_datetime_start(self):
