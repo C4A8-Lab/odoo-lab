@@ -28,7 +28,7 @@ class AccountAnalyticLine(models.Model):
     def _compute_datetime_stop(self):
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
-            _logger.debug("Stop Time"+stop)
+            _logger.debug("Stop Time "+stop.strftime("%m/%d/%Y, %H:%M:%S"))
             rec.datetime_stop = rec.date + stop
     
     def _update_datetime_start(self):
