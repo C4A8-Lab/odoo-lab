@@ -20,21 +20,21 @@ class AccountAnalyticLine(models.Model):
 
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
-        start = timedelta(hours=self.time_start)
-        self.datetime_start = self.date + start
+        for rec in self:
+            start = timedelta(hours=rec.time_start)
+            rec.datetime_start = rec.date + start
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
-        stop = timedelta(hours=self.time_stop)
-        self.datetime_stop = self.date + stop
+        for rec in self:
+            stop = timedelta(hours=rec.time_stop)
+            rec.datetime_stop = rec.date + stop
     
-    @api.one
     def _update_datetime_start(self):
         _logger.debug("_update_datetime_start triggered")
         _logger.warning("_update_datetime_start triggered")
         _logger.error("_update_datetime_start triggered")
         
-    @api.one
     def _update_datetime_stop(self):
         _logger.debug("_update_datetime_stop triggered")
         _logger.warning("_update_datetime_stop triggered")
