@@ -4,7 +4,8 @@
         <field name="name">account.analytic.line.view.calendar.beginend</field>
         <field name="model">account.analytic.line</field>
         <field name="arch" type="xml">
-            <calendar date_start="datetime_start" date_stop="datetime_stop" string="Default calendar view for account.analytic.line" event_open_popup="true" mode="week">
+            <calendar date_start="datetime_start" date_stop="datetime_stop" string="Timesheet" event_open_popup="true" mode="week">
+                <field name="account_id"/>
                 <field name="project_id"/>
                 <field name="task_id"/>
                 <field name="name"/>
