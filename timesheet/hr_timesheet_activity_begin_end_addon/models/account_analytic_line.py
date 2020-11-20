@@ -3,12 +3,11 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from datetime import timedelta, datetime, time
-import logging
-
-_logger = logging.getLogger(__name__)
-
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.float_utils import float_compare
+
+# import logging
+# _logger = logging.getLogger(__name__)
 
 
 class AccountAnalyticLine(models.Model):
@@ -22,23 +21,23 @@ class AccountAnalyticLine(models.Model):
     def _compute_datetime_start(self):
         for rec in self:
             start = timedelta(hours=rec.time_start)
-            rec.datetime_start = datetime.combine(rec.date, time(0)) + start
+            rec.datetime_start = datetime.combine(rec.date(), time(0)) + start
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
-            rec.datetime_stop = datetime.combine(rec.date, time(0)) + stop
+            rec.datetime_stop = datetime.combine(rec.date(), time(0)) + stop
              
     def _update_datetime_start(self):
         for rec in self:
-            dif = rec.datetime_start - datetime.combine(rec.datetime_start.date, time(0))
+            dif = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
             rec.time_start = dif.total_seconds() / 3600
-            rec.date = rec.datetime_start.date
+            rec.date = rec.datetime_start.date()
          
     def _update_datetime_stop(self):
         for rec in self:
-            dif = rec.datetime_stop - datetime.combine(rec.datetime_stop.date, time(0))
+            dif = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
             rec.time_start = dif.total_seconds() / 3600
 
  
