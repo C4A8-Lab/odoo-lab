@@ -15,7 +15,7 @@ class AccountAnalyticLine(models.Model):
     _order = "date desc, time_start desc, id desc"
 
     datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="_update_datetime_start", string="Begin")
-    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_stop", string="End")
+    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_start", string="End")
 
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
@@ -34,11 +34,12 @@ class AccountAnalyticLine(models.Model):
     def _update_datetime_start(self):
         _logger.info("Triggered _update_datetime_start")
         for rec in self:
-            difStart = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
-            difStop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
+            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
+            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
 
-            #rec.unit_amount = (difStop - difStart).seconds / 3600
-            rec.time_start = difStart.total_seconds() / 3600
+            rec.unit_amount = (stop - start).seconds / 3600
+            rec.time_start = start.total_seconds() / 3600
+            rec.time_stop = stop.total_seconds() / 3600
             rec.date = rec.datetime_start.date()
          
     def _update_datetime_stop(self):
@@ -47,18 +48,18 @@ class AccountAnalyticLine(models.Model):
             start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
             stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
 
-            #rec.unit_amount = (stop - start).seconds / 3600
-            rec.time_stop = start.total_seconds() / 3600
-            #rec.onchange_hours_start_stop()
+            rec.unit_amount = (stop - start).seconds / 3600
+            rec.time_stop = stop.total_seconds() / 3600
+           # onchange_hours_start_stop()
 
-    @api.onchange("datetime_start", "datetime_stop")
-    def onchange_hours_start_stop(self):
-        _logger.info("Triggered onchange_hours_start_stop")
-        start = self.datetime_start - datetime.combine(self.datetime_start.date(), time(0))
-        stop = self.datetime_stop - datetime.combine(self.datetime_stop.date(), time(0))
-        if stop < start:
-            return
-        self.unit_amount = (stop - start).seconds / 3600
+#    @api.onchange("datetime_start", "datetime_stop")
+#    def onchange_hours_start_stop(self):
+#        _logger.info("Triggered onchange_hours_start_stop")
+#        start = self.datetime_start - datetime.combine(self.datetime_start.date(), time(0))
+#        stop = self.datetime_stop - datetime.combine(self.datetime_stop.date(), time(0))
+#        if stop < start:
+#            return
+#        self.unit_amount = (stop - start).seconds / 3600
 
  #   def _update_datetime_stop(self):
  #       for rec in self:
