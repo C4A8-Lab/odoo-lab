@@ -73,8 +73,7 @@ class AccountAnalyticLine(models.Model):
 
     @api.depends("time_start", "time_stop")
     def onchange_hours_start_stop(self):
-         _logger.info("Triggered onchange_hours_start_stop")
-           
+        _logger.info("Triggered onchange_hours_start_stop")
         start = timedelta(hours=self.time_start)
         stop = timedelta(hours=self.time_stop)
         if stop < start:
