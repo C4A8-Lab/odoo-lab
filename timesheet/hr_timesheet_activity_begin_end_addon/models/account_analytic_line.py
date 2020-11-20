@@ -20,6 +20,13 @@ class AccountAnalyticLine(models.Model):
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
         _logger.info("Triggered _compute_datetime_start")
+
+        context = self._context
+        current_uid = context.get('uid')
+        user = self.env['res.users'].browse(current_uid)
+        _logger.info(user)
+        _logger.info(user.partner_id.tz)
+
         for rec in self:
             start = timedelta(hours=rec.time_start)
             rec.datetime_start = datetime.combine(rec.date, time(0)) + start
