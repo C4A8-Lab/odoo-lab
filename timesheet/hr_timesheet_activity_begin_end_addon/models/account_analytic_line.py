@@ -18,7 +18,7 @@ class AccountAnalyticLine(models.Model):
     datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_start", string="End")
 
 
-    def _get_user_timezone():
+    def _get_user_timezone(self):
         context = self._context
         current_uid = context.get('uid')
         user = self.env['res.users'].browse(current_uid)
@@ -30,14 +30,14 @@ class AccountAnalyticLine(models.Model):
 
         for rec in self:
             start = timedelta(hours=rec.time_start)
-            rec.datetime_start = datetime.combine(rec.date, time(0), _get_user_timezone()) + start
+            rec.datetime_start = datetime.combine(rec.date, time(0), self._get_user_timezone()) + start
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
         _logger.info("Triggered _compute_datetime_stop")
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
-            rec.datetime_stop = datetime.combine(rec.date, time(0), _get_user_timezone()) + stop
+            rec.datetime_stop = datetime.combine(rec.date, time(0), self._get_user_timezone()) + stop
 
     @api.constrains("time_start", "time_stop", "unit_amount")
     def _check_time_start_stop(self):
