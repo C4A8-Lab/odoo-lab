@@ -53,6 +53,7 @@ class AccountAnalyticLine(models.Model):
 
     @api.onchange("datetime_start", "datetime_stop")
     def onchange_hours_start_stop(self):
+        _logger.info("Triggered onchange_hours_start_stop")
         start = self.datetime_start - datetime.combine(self.datetime_start.date(), time(0))
         stop = self.datetime_stop - datetime.combine(self.datetime_stop.date(), time(0))
         if stop < start:
