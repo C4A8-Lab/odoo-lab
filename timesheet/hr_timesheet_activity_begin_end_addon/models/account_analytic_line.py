@@ -44,11 +44,20 @@ class AccountAnalyticLine(models.Model):
     def _update_datetime_stop(self):
         _logger.info("Triggered _update_datetime_stop")
         for rec in self:
-            difStart = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
-            difStop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
+            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
+            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
 
-            #rec.unit_amount = (difStop - difStart).seconds / 3600
-            rec.time_stop = difStop.total_seconds() / 3600
+            #rec.unit_amount = (stop - start).seconds / 3600
+            rec.time_stop = start.total_seconds() / 3600
+            #rec.onchange_hours_start_stop()
+
+    @api.onchange("datetime_start", "datetime_stop")
+    def onchange_hours_start_stop(self):
+        start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
+        stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
+        if stop < start:
+            return
+        self.unit_amount = (stop - start).seconds / 3600
 
  #   def _update_datetime_stop(self):
  #       for rec in self:
