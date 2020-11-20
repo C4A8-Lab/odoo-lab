@@ -38,12 +38,12 @@ class AccountAnalyticLine(models.Model):
             start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
             stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
             
-            rec.unit_amount = (stop - start).seconds / 3600
-            _logger.info("Write unit_amount")
             rec.time_start = start.total_seconds() / 3600
             _logger.info("Write time_start")
             rec.time_stop = stop.total_seconds() / 3600
             _logger.info("Write time_stop")
+            rec.unit_amount = (stop - start).seconds / 3600
+            _logger.info("Write unit_amount")
             rec.date = rec.datetime_start.date()
 
         _logger.info("Completed _update_datetime_start")
