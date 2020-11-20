@@ -9,6 +9,12 @@
                 <field name="time_start" widget="float_time" />
                 <field name="time_stop" widget="float_time" />
             </field>
+            <xpath
+              expr="//field[@name='timesheet_ids']/form/group/field[@name='unit_amount']"
+              position="before">
+                <field name="time_start" widget="float_time"/>
+                <field name="time_stop" widget="float_time"/>
+            </xpath>
         </field>
     </record>
 </odoo>

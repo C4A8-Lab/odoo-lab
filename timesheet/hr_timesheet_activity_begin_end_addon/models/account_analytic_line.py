@@ -17,26 +17,27 @@ class AccountAnalyticLine(models.Model):
     datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="_update_datetime_start", string="Begin")
     datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_start", string="End")
 
+
+    def _get_user_timezone():
+        context = self._context
+        current_uid = context.get('uid')
+        user = self.env['res.users'].browse(current_uid)
+        return user.partner_id.tz
+
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
         _logger.info("Triggered _compute_datetime_start")
 
-        context = self._context
-        current_uid = context.get('uid')
-        user = self.env['res.users'].browse(current_uid)
-        _logger.info(user)
-        _logger.info(user.partner_id.tz)
-
         for rec in self:
             start = timedelta(hours=rec.time_start)
-            rec.datetime_start = datetime.combine(rec.date, time(0)) + start
+            rec.datetime_start = datetime.combine(rec.date, time(0), _get_user_timezone()) + start
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
         _logger.info("Triggered _compute_datetime_stop")
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
-            rec.datetime_stop = datetime.combine(rec.date, time(0)) + stop
+            rec.datetime_stop = datetime.combine(rec.date, time(0), _get_user_timezone()) + stop
 
     @api.constrains("time_start", "time_stop", "unit_amount")
     def _check_time_start_stop(self):
