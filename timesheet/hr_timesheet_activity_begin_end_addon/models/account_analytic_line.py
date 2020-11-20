@@ -6,8 +6,8 @@ from datetime import timedelta, datetime, time
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.float_utils import float_compare
 
-# import logging
-# _logger = logging.getLogger(__name__)
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class AccountAnalyticLine(models.Model):
@@ -30,6 +30,7 @@ class AccountAnalyticLine(models.Model):
             rec.datetime_stop = datetime.combine(rec.date, time(0)) + stop
              
     def _update_datetime(self):
+        _logger.info("Triggered _update_datetime")
         for rec in self:
             difStart = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
             difStop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
