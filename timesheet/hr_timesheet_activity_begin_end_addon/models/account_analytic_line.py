@@ -31,8 +31,13 @@ class AccountAnalyticLine(models.Model):
             stop = timedelta(hours=rec.time_stop)
             rec.datetime_stop = datetime.combine(rec.date, time(0)) + stop
 
+    @api.constrains("time_start", "time_stop", "unit_amount")
+    def _check_time_start_stop(self):
+        return True
+
+
     @api.onchange('datetime_start', 'datetime_stop')
-    def onchange_datetime_start(self):
+    def _onchange_datetime_start(self):
         _logger.info("Triggered onchange_datetime_start")
         _logger.info(self)
         for rec in self:
