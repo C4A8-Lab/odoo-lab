@@ -14,32 +14,42 @@ class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
     _order = "date desc, time_start desc, id desc"
 
-    datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="_update_datetime", string="Begin")
-    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime", string="End")
+    datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="_update_datetime_start", string="Begin")
+    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_stop", string="End")
 
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
+        _logger.info("Triggered _compute_datetime_start")
         for rec in self:
             start = timedelta(hours=rec.time_start)
             rec.datetime_start = datetime.combine(rec.date, time(0)) + start
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
+        _logger.info("Triggered _compute_datetime_stop")
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
             rec.datetime_stop = datetime.combine(rec.date, time(0)) + stop
              
-    def _update_datetime(self):
-        _logger.info("Triggered _update_datetime")
+    def _update_datetime_start(self):
+        _logger.info("Triggered _update_datetime_start")
         for rec in self:
             difStart = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
             difStop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
 
             rec.unit_amount = (difStop - difStart).seconds / 3600
             rec.time_start = difStart.total_seconds() / 3600
-            rec.time_stop = difStop.total_seconds() / 3600
             rec.date = rec.datetime_start.date()
          
+    def _update_datetime_stop(self):
+        _logger.info("Triggered _update_datetime_stop")
+        for rec in self:
+            difStart = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
+            difStop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
+
+            rec.unit_amount = (difStop - difStart).seconds / 3600
+            rec.time_stop = difStop.total_seconds() / 3600
+
  #   def _update_datetime_stop(self):
  #       for rec in self:
  #           dif = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
