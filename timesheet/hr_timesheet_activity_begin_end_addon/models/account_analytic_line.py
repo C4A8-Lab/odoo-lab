@@ -21,7 +21,6 @@ class AccountAnalyticLine(models.Model):
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
         for rec in self:
-
             start = timedelta(hours=rec.time_start)
             rec.datetime_start = datetime.combine(rec.date, time(0)) + start
     
@@ -39,7 +38,7 @@ class AccountAnalyticLine(models.Model):
          
     def _update_datetime_stop(self):
         for rec in self:
-            if = rec.datetime_stop - datetime.combine(rec.datetime_stop.date, time(0))
+            dif = rec.datetime_stop - datetime.combine(rec.datetime_stop.date, time(0))
             rec.time_start = dif.total_seconds() / 3600
 
  
