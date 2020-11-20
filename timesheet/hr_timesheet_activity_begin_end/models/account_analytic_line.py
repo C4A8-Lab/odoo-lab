@@ -71,9 +71,8 @@ class AccountAnalyticLine(models.Model):
                 )
                 raise exceptions.ValidationError(message)
 
-    @api.depends("time_start", "time_stop")
+    @api.onchange("time_start", "time_stop")
     def onchange_hours_start_stop(self):
-        _logger.info("Triggered onchange_hours_start_stop")
         start = timedelta(hours=self.time_start)
         stop = timedelta(hours=self.time_stop)
         if stop < start:
