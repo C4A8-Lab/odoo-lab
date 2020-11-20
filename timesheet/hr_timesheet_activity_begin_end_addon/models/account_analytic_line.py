@@ -30,13 +30,16 @@ class AccountAnalyticLine(models.Model):
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
             rec.datetime_stop = datetime.combine(rec.date, time(0)) + stop
-            _logger.info(rec.datetime_stop)
-            
+             
     def _update_datetime_start(self):
         for rec in self:
-            rec.time_start = (rec.datetime_start.time() - time(0)).hours
+            dif = rec.datetime_start - datetime.combine(rec.datetime_start.date, time(0))
+            rec.time_start = dif.total_seconds() / 3600
+            rec.date = rec.datetime_start.date
          
     def _update_datetime_stop(self):
         for rec in self:
-            rec.time_stop = (rec.datetime_stop.time() - time(0)).hours
+            if = rec.datetime_stop - datetime.combine(rec.datetime_stop.date, time(0))
+            rec.time_start = dif.total_seconds() / 3600
+
  
