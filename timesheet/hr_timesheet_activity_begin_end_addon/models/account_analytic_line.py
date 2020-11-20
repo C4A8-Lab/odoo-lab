@@ -33,7 +33,7 @@ class AccountAnalyticLine(models.Model):
         for rec in self:
             start = timedelta(hours=rec.time_start)
             dt = datetime.combine(rec.date, time(0)) + start
-            rec.datetime_start =  self._get_user_timezone().localize(dt)
+            rec.datetime_start =  dt + self._get_user_timezone().utcoffset(dt)
     
     @api.depends('date', 'time_stop')
     def _compute_datetime_stop(self):
@@ -41,7 +41,7 @@ class AccountAnalyticLine(models.Model):
         for rec in self:
             stop = timedelta(hours=rec.time_stop)
             dt = datetime.combine(rec.date, time(0)) + stop
-            rec.datetime_stop =  self._get_user_timezone().localize(dt)
+            rec.datetime_stop =  dt + self._get_user_timezone().utcoffset(dt)
 
     @api.constrains("time_start", "time_stop", "unit_amount")
     def _check_time_start_stop(self):
