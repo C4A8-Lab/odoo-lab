@@ -2,6 +2,7 @@
 # Copyright 2017 Tecnativa, S.L. - Luis M. Ontalba
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
+import pytz
 from datetime import timedelta, datetime, time
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.float_utils import float_compare
@@ -22,7 +23,7 @@ class AccountAnalyticLine(models.Model):
         context = self._context
         current_uid = context.get('uid')
         user = self.env['res.users'].browse(current_uid)
-        return user.partner_id.tz
+        return  pytz.timezone(user.partner_id.tz)
 
     @api.depends('date', 'time_start')
     def _compute_datetime_start(self):
