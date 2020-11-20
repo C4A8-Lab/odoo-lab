@@ -37,12 +37,11 @@ class AccountAnalyticLine(models.Model):
                 raise exceptions.ValidationError(
                     _(
                         "The duration (%s) must be equal to the difference "
-                        "between the hours (%s-%s)."
+                        "between the hours (%s)."
                     )
                     % (
                         value_to_html(line.unit_amount, None),
-                        value_to_html(start, None),
-                        value_to_html(stop, None)
+                        value_to_html(hours, None),
                     )
                 )
             # check if lines overlap

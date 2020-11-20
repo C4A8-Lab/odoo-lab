@@ -36,7 +36,7 @@ class AccountAnalyticLine(models.Model):
             rec.time_start = difStart.total_seconds() / 3600
             difStop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
             rec.time_stop = difStop.total_seconds() / 3600
-
+            rec.unit_amount = (difStop - difStart).seconds / 3600
          
  #   def _update_datetime_stop(self):
  #       for rec in self:
