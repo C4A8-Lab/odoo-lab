@@ -71,8 +71,8 @@ class AccountAnalyticLine(models.Model):
         _logger.info(self)
         for rec in self:
             tzone = self._get_user_timezone()
-            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0)) + tzone.utcoffset(datetime_stop)
-            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0)) + tzone.utcoffset(datetime_stop)
+            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0)) + tzone.utcoffset(rec.datetime_stop)
+            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0)) + tzone.utcoffset(rec.ddatetime_stop)
             
             rec.time_start = start.total_seconds() / 3600
             _logger.info("Write time_start")
