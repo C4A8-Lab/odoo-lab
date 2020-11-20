@@ -53,8 +53,8 @@ class AccountAnalyticLine(models.Model):
 
     @api.onchange("datetime_start", "datetime_stop")
     def onchange_hours_start_stop(self):
-        start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
-        stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
+        start = self.datetime_start - datetime.combine(self.datetime_start.date(), time(0))
+        stop = self.datetime_stop - datetime.combine(self.datetime_stop.date(), time(0))
         if stop < start:
             return
         self.unit_amount = (stop - start).seconds / 3600
