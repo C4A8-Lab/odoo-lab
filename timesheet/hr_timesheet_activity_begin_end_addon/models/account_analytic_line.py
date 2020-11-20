@@ -11,6 +11,7 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
     _order = "date desc, time_start desc, id desc"
