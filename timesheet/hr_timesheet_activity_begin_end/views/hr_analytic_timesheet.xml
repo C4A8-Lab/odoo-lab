@@ -16,7 +16,7 @@
         <field name="model">account.analytic.line</field>
         <field name="inherit_id" ref="timesheet_grid.timesheet_view_form" />
         <field name="arch" type="xml">
-            <field name="unit_amount" position="before">
+            <field name="date" position="after">
                 <field name="time_start" widget="float_time" decoration-danger="time_start &lt; 6" />
                 <field name="time_stop" widget="float_time" decoration-danger="time_stop &gt; 21" />
             </field>
