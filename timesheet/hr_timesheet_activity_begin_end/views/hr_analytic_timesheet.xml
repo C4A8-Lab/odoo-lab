@@ -14,7 +14,7 @@
     <record id="timesheet_view_form" model="ir.ui.view">
         <field name="name">hr.analytic.timesheet.form</field>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="timesheet_grid.timesheet_view_form" />
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form" />
         <field name="arch" type="xml">
             <field name="unit_amount" position="before">
                 <field name="time_start" widget="float_time" decoration-danger="time_start &lt; 6" />
