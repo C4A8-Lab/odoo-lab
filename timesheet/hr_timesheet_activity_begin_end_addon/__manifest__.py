@@ -11,7 +11,8 @@
     "depends": ["hr_timesheet_activity_begin_end"],
     "website": "",
     "data": [
-        "views/hr_analytic_timesheet.xml"
+        "views/hr_analytic_timesheet.xml",
+        "views/hr_timesheet_calendar.xml"
     ],
     "installable": True,
     "auto_install": False,

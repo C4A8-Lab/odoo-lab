@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="act_hr_timesheet_calendar" model="ir.actions.act_window">
+         <field name="view_mode">grid,calendar,list,kanban</field>
+    </record>
+</odoo>
