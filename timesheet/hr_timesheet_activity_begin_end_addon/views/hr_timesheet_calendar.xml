@@ -14,8 +14,4 @@
             </calendar>
         </field>
     </record>
-
-    <record id="act_hr_timesheet_line" model="ir.actions.act_window">
-        <field name="view_mode">grid,tree,form,calendar</field>
-     </record>
 </odoo>
