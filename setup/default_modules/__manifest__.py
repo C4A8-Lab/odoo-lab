@@ -10,7 +10,6 @@
     "category": "Human Resources",
     "depends": [
         "l10n_de_skr03",
-        "hr_timesheet_activity_begin_end", 
         "account", 
         "sale_management", 
         "hr", 
@@ -21,6 +20,7 @@
         "account_accountant", 
         "sale_subscription",
         "timesheet_grid",
+        "hr_timesheet_activity_begin_end", 
     ],
     "website": "https://github.com/OCA/timesheet",
     "data": [],
