@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="account_analytic_line_calendar_timesheet" model="ir.ui.view">
+    <record id="view_account_analytic_line_calendar" model="ir.ui.view">
         <field name="name">account.analytic.line.view.calendar.beginend</field>
         <field name="model">account.analytic.line</field>
         <field name="arch" type="xml">
@@ -14,7 +14,7 @@
             </calendar>
         </field>
     </record>
-    <record id="act_hr_timesheet_calendar" model="ir.actions.act_window">
+    <record id="act_hr_timesheet_line" model="ir.actions.act_window">
         <field name="view_mode">calendar,grid,list,kanban</field>
     </record>
 </odoo>
