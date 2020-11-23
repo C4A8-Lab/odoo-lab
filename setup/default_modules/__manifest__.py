@@ -19,8 +19,8 @@
         "sale_management", 
         "account_accountant", 
         "sale_subscription",
-        "timesheet_grid",
-        "hr_timesheet_activity_begin_end", 
+        "timesheet_grid"
+         
     ],
     "website": "https://github.com/OCA/timesheet",
     "data": [],
