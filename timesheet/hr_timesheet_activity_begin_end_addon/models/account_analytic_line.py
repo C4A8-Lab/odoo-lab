@@ -43,6 +43,14 @@ class AccountAnalyticLine(models.Model):
             dt = datetime.combine(rec.date, time(0)) + stop
             rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
 
+    @api.depends('date', 'unit_amount')
+    def _compute_datetime_stop_duration(self):
+        _logger.info("Triggered _compute_datetime_stop")
+        for rec in self:
+            stop = timedelta(hours=rec.time_start) + timedelta(hours=rec.unit_amount)
+            dt = datetime.combine(rec.date, time(0)) + stop
+            rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
+
     @api.constrains("time_start", "time_stop", "unit_amount")
     def _check_time_start_stop(self):
         return True
@@ -57,14 +65,9 @@ class AccountAnalyticLine(models.Model):
             stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
             
             rec.time_start = start.total_seconds() / 3600
-            _logger.info("Write time_start")
             rec.time_stop = stop.total_seconds() / 3600
-            _logger.info("Write time_stop")
             rec.unit_amount = (stop - start).seconds / 3600
-            _logger.info("Write unit_amount")
             rec.date = rec.datetime_start.date()
-
-        _logger.info("Completed _update_datetime_start")
              
     def _update_datetime_start(self):
         _logger.info("Triggered _update_datetime_start")
@@ -75,11 +78,8 @@ class AccountAnalyticLine(models.Model):
             stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0)) + tzone.utcoffset(rec.datetime_stop)
             
             rec.time_start = start.total_seconds() / 3600
-            _logger.info("Write time_start")
             rec.time_stop = stop.total_seconds() / 3600
-            _logger.info("Write time_stop")
             rec.unit_amount = (stop - start).seconds / 3600
-            _logger.info("Write unit_amount")
             rec.date = rec.datetime_start.date()
 
         _logger.info("Completed _update_datetime_start")
