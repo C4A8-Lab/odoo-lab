@@ -1,3 +1,4 @@
 [submodule "oca/server-ux"]
 	path = oca/server-ux
 	url = git@github.com:OCA/server-ux.git
+	branch = 14.0
