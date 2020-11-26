@@ -17,7 +17,7 @@ class AccountAnalyticLine(models.Model):
     _order = "date desc, time_start desc, id desc"
 
     datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="_update_datetime_start", string="Begin")
-    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_start", string="End")
+    datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_stop", string="End")
 
 
     def _get_user_timezone(self):
@@ -45,11 +45,30 @@ class AccountAnalyticLine(models.Model):
 
     @api.depends('date', 'unit_amount')
     def _compute_datetime_stop_duration(self):
-        _logger.info("Triggered _compute_datetime_stop")
+        _logger.info("Triggered _compute_datetime_stop_duration")
+        _logger.info(self)
         for rec in self:
             stop = timedelta(hours=rec.time_start) + timedelta(hours=rec.unit_amount)
             dt = datetime.combine(rec.date, time(0)) + stop
             rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
+            rec.time_stop =  stop.seconds / 3600
+            
+    @api.onchange('date', 'unit_amount')
+    def _onchange_datetime_stop_duration(self):
+        _logger.info("Triggered _onchange_datetime_stop_duration")
+        _logger.info(self)
+       
+        for rec in self:
+            _logger.info(rec.time_start)
+            _logger.info(rec.time_stop)
+            _logger.info(rec.datetime_start)
+            _logger.info(rec.datetime_stop)
+            _logger.info(rec.unit_amount)
+            stop = timedelta(hours=rec.time_start) + timedelta(hours=rec.unit_amount)
+            dt = datetime.combine(rec.date, time(0)) + stop
+            rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
+            rec.time_stop =  stop.seconds / 3600
+                        
 
     @api.constrains("time_start", "time_stop", "unit_amount")
     def _check_time_start_stop(self):
@@ -74,26 +93,31 @@ class AccountAnalyticLine(models.Model):
         _logger.info(self)
         for rec in self:
             tzone = self._get_user_timezone()
-            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0)) + tzone.utcoffset(rec.datetime_stop)
-            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0)) + tzone.utcoffset(rec.datetime_stop)
+            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0)) + tzone.utcoffset(rec.datetime_start)
+            #stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0)) + tzone.utcoffset(rec.datetime_stop)
             
             rec.time_start = start.total_seconds() / 3600
-            rec.time_stop = stop.total_seconds() / 3600
-            rec.unit_amount = (stop - start).seconds / 3600
+            #rec.time_stop = stop.total_seconds() / 3600
+            #rec.unit_amount = (stop - start).seconds / 3600
             rec.date = rec.datetime_start.date()
 
         _logger.info("Completed _update_datetime_start")
-         
+        
     def _update_datetime_stop(self):
         _logger.info("Triggered _update_datetime_stop")
+        _logger.info(self)
         for rec in self:
-            start = rec.datetime_start - datetime.combine(rec.datetime_start.date(), time(0))
-            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0))
-
-            rec.unit_amount = (stop - start).seconds / 3600
+            tzone = self._get_user_timezone()
+            start = timedelta(hours=rec.time_start)
+            stop = rec.datetime_stop - datetime.combine(rec.datetime_stop.date(), time(0)) + tzone.utcoffset(rec.datetime_stop)
+            
+           # rec.time_start = start.total_seconds() / 3600
             rec.time_stop = stop.total_seconds() / 3600
-           # onchange_hours_start_stop()
+            rec.unit_amount = (stop - start).seconds / 3600
+            #rec.date = rec.datetime_start.date()
 
+        _logger.info("Completed _update_datetime_stop")
+         
 #    @api.onchange("datetime_start", "datetime_stop")
 #    def onchange_hours_start_stop(self):
 #        _logger.info("Triggered onchange_hours_start_stop")

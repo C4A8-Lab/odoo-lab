@@ -8,9 +8,9 @@
                 <field name="project_id"/>
                 <field name="task_id"/>
                 <field name="name"/>
-                <field name="datetime_start"/>
-                <field name="datetime_stop"/>
-                <field name="unit_amount"/>
+                <field name="time_start" widget="float_time" />
+                <field name="time_stop" widget="float_time" />
+                <field name="unit_amount" widget="float_time" />
             </calendar>
         </field>
     </record>
