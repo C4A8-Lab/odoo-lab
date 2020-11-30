@@ -19,6 +19,100 @@ class AccountAnalyticLine(models.Model):
     datetime_start = fields.Datetime(compute= "_compute_datetime_start", inverse="_update_datetime_start", string="Begin")
     datetime_stop = fields.Datetime(compute= "_compute_datetime_stop", inverse="_update_datetime_stop", string="End")
 
+    @api.model
+    def create(self, values):
+        _logger.info("Event {module} create".format(module = self._inherit))  
+        _logger.info(values)
+
+        if ('time_start' not in values or values['time_start'] == 0):
+            otherWork = self.env[self._inherit].search([['employee_id','=',values['employee_id']],['date','=',values['date']]], order='date desc,time_stop desc', limit=1)
+            _logger.info("Set start")
+            _logger.info(otherWork)
+            _logger.info(values['date'])
+            start = 8
+            if (otherWork.time_stop != 0):
+                start = otherWork.time_stop
+            _logger.info("Set start time to {start}".format(start = start))  
+            values['time_start'] = start
+            values['time_stop'] = start + values['unit_amount']
+        else:
+             _logger.info("Set Stop")
+             values['time_stop'] = values['time_start'] + values['unit_amount']
+
+        result = super(AccountAnalyticLine, self).create(values)
+        return result
+
+    @api.model
+    def copy(self, values):
+        _logger.info("Event {module} copy".format(module = self._inherit))  
+        _logger.info(values)  
+        
+        values['time_start'] = 0
+        values['time_stop'] = values['unit_amount']
+        _logger.info(values)  
+        
+        result = super(AccountAnalyticLine, self).copy(values)
+        
+#        for rec in result:
+#            _logger.info(rec)  
+#            rec.time_start = 0
+#            rec.time_stop = rec['unit_amount']
+        
+        _logger.info("/Event {module} copy".format(module = self._inherit))  
+        _logger.info(result)  
+        return result
+
+    @api.model
+    def write(self, values):
+        _logger.info("Event {module} write".format(module = self._inherit))  
+        _logger.info(values)  
+        
+        if ('unit_amount' in values):
+            if ('time_start' in values):
+                values['time_stop'] = values['time_start'] + values['unit_amount']
+            else:
+                values['time_stop'] = self.time_start + values['unit_amount']
+        
+        result = super(AccountAnalyticLine, self).write(values)
+        _logger.info("/Event {module} write".format(module = self._inherit))  
+        _logger.info(result)  
+        return result
+    
+    @api.model
+    def default_get(self, fields_list):
+        _logger.info("Event {module} default_get".format(module = self._inherit))  
+        _logger.info(fields_list)  
+        result = super(AccountAnalyticLine, self).default_get(fields_list)
+        
+#        if ('time_start' in fields_list):
+#            result['time_start'] = 0
+#            
+#        if ('time_stop' in fields_list):
+#            result['time_stop'] = 0
+            
+        _logger.info(result)
+        
+#        if ('time_start' in result):
+#            start = 8
+#            if (otherWork):
+#                start = otherWork[0].time_stop
+#            _logger.info("Set start time to {start}".format(start = start))  
+#            values['time_start'] = start
+#            values['time_stop'] = start + values['unit_amount']        
+        
+#        if ('datetime_start' in result):
+#            start = result['time_start'] - datetime.combine(result['datetime_start'].date(), time(0))
+#            result['time_start'] = start.seconds / 3600
+#            
+#        if (result.datetime_stop):
+#            stop = result['time_stop'] - datetime.combine(result['datetime_stop'].date(), time(0))
+#            result['time_stop'] = stop.seconds / 3600
+       
+        _logger.info("/Event {module} default_get".format(module = self._inherit))  
+        _logger.info(result)  
+        return result
+
+    
 
     def _get_user_timezone(self):
         context = self._context
@@ -43,14 +137,32 @@ class AccountAnalyticLine(models.Model):
             dt = datetime.combine(rec.date, time(0)) + stop
             rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
 
+    
+    
     @api.depends('date', 'unit_amount')
     def _compute_datetime_stop_duration(self):
         _logger.info("Triggered _compute_datetime_stop_duration")
         _logger.info(self)
         for rec in self:
+            _logger.info(rec.employee_id)
+            _logger.info(rec.time_start)
+            _logger.info(rec.time_stop)
+            _logger.info(rec.datetime_start)
+            _logger.info(rec.datetime_stop)
+            _logger.info(rec.unit_amount)
+
+#            otherWork = self.env[self._inherit].search([['employee_id','=',rec.employee_id[0].id],['date','=',rec.date]], order='date desc,time_stop desc')
+#            _logger.info(otherWork)
+#            
+#            if (rec.time_start == 0):
+#                start = 8
+#                if (otherWork):
+#                    start = otherWork[0].time_stop
+#                rec.time_start = start
+
             stop = timedelta(hours=rec.time_start) + timedelta(hours=rec.unit_amount)
-            dt = datetime.combine(rec.date, time(0)) + stop
-            rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
+#            dt = datetime.combine(rec.date, time(0)) + stop
+#            rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
             rec.time_stop =  stop.seconds / 3600
             
     @api.onchange('date', 'unit_amount')
@@ -59,14 +171,27 @@ class AccountAnalyticLine(models.Model):
         _logger.info(self)
        
         for rec in self:
+            _logger.info(rec.employee_id)
+            _logger.info(rec.employee_id[0])
             _logger.info(rec.time_start)
             _logger.info(rec.time_stop)
             _logger.info(rec.datetime_start)
             _logger.info(rec.datetime_stop)
             _logger.info(rec.unit_amount)
+
+            
+#            otherWork = self.env[self._inherit].search([['employee_id','=',rec.employee_id[0].id],['date','=',rec.date]], order='date desc,time_stop desc')
+#            _logger.info(otherWork)
+#            
+#            if (rec.time_start == 0):
+#                start = 8
+#                if (otherWork):
+#                    start = otherWork[0].time_stop
+#                rec.time_start = start
+#            
             stop = timedelta(hours=rec.time_start) + timedelta(hours=rec.unit_amount)
             dt = datetime.combine(rec.date, time(0)) + stop
-            rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
+#            rec.datetime_stop =  dt - self._get_user_timezone().utcoffset(dt)
             rec.time_stop =  stop.seconds / 3600
                         
 
