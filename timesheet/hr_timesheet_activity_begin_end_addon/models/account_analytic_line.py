@@ -23,21 +23,26 @@ class AccountAnalyticLine(models.Model):
     def create(self, values):
         _logger.info("Event {module} create".format(module = self._inherit))  
         _logger.info(values)
+        
+        if ('unit_amount' in values):
+            if ('time_start' not in values or values['time_start'] == 0):
+                start = 8
+                employeeId = self.env['hr.employee'].search([('user_id','=',self.env.user.id)], limit=1)
+                               
+                _logger.info("Employee_id")
+                _logger.info(employeeId)
+                if ('employee_id' in values and 'date' in values):
+                    otherWork = self.env[self._inherit].search([['employee_id','=',values['employee_id']],['date','=',values['date']]], order='date desc,time_stop desc', limit=1)
+                    _logger.info(otherWork)
+                    if (otherWork.time_stop != 0):
+                        start = otherWork.time_stop
 
-        if ('time_start' not in values or values['time_start'] == 0):
-            otherWork = self.env[self._inherit].search([['employee_id','=',values['employee_id']],['date','=',values['date']]], order='date desc,time_stop desc', limit=1)
-            _logger.info("Set start")
-            _logger.info(otherWork)
-            _logger.info(values['date'])
-            start = 8
-            if (otherWork.time_stop != 0):
-                start = otherWork.time_stop
-            _logger.info("Set start time to {start}".format(start = start))  
-            values['time_start'] = start
-            values['time_stop'] = start + values['unit_amount']
-        else:
-             _logger.info("Set Stop")
-             values['time_stop'] = values['time_start'] + values['unit_amount']
+                _logger.info("Set start time to {start}".format(start = start))  
+                values['time_start'] = start
+                values['time_stop'] = start + values['unit_amount']
+            else:
+                 _logger.info("Set Stop")
+                 values['time_stop'] = values['time_start'] + values['unit_amount']
 
         result = super(AccountAnalyticLine, self).create(values)
         return result
@@ -68,11 +73,18 @@ class AccountAnalyticLine(models.Model):
         _logger.info(values)  
         
         if ('unit_amount' in values):
+#            if ('time_start' not in values and self.time_start == 0):
+#                otherWork = self.env[self._inherit].search([['employee_id','=',self.employee_id[0].id],['date','=',self.date]], order='date desc,time_stop desc', limit=1)
+#                if (otherWork.time_stop != 0):
+#                    values['time_start'] = otherWork.time_stop
+#                else:
+#                    values['time_start'] = 8
+
             if ('time_start' in values):
                 values['time_stop'] = values['time_start'] + values['unit_amount']
             else:
                 values['time_stop'] = self.time_start + values['unit_amount']
-        
+        _logger.info(values)  
         result = super(AccountAnalyticLine, self).write(values)
         _logger.info("/Event {module} write".format(module = self._inherit))  
         _logger.info(result)  
