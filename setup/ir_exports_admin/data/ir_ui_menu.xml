@@ -1,46 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <record id="ir_exports_admin.ir_exports" model="ir.ui.menu">
-    <field name="action" eval="False"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Export</field>
-    <field name="parent_id" eval="False"/>
-    <field name="sequence">10</field>
-    <field name="web_icon">fa fa-code,#f1c40f,#34495e</field>
-  </record>
-  <record id="ir_exports_admin.ir_exports_menu" model="ir.ui.menu">
-    <field name="action" ref="ir_exports_admin.action_ir_exports"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Exports</field>
-    <field name="parent_id" ref="ir_exports_admin.ir_exports"/>
-    <field name="sequence">10</field>
-    <field name="web_icon" eval="False"/>
-  </record>
-  <record id="ir_exports_admin.ir_exports_line" model="ir.ui.menu">
-    <field name="action" eval="False"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Exports Line</field>
-    <field name="parent_id" eval="False"/>
-    <field name="sequence">10</field>
-    <field name="web_icon">fa fa-diamond,#f1c40f,#34495e</field>
-  </record>
-  <record id="ir_exports_admin.ir_exports_line_menu" model="ir.ui.menu">
-    <field name="action" ref="ir_exports_admin.action_ir_exports_line"/>
-    <field name="active" eval="True"/>
-    <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Exports Line</field>
-    <field name="parent_id" ref="ir_exports_admin.ir_exports_line"/>
-    <field name="sequence">10</field>
-    <field name="web_icon" eval="False"/>
-  </record>
   <record id="ir_exports_admin.menu_settings_resource_exports" model="ir.ui.menu">
     <field name="action" ref="ir_exports_admin.action_ir_exports"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Exports Line</field>
+    <field name="name">Exports Templates</field>
     <field name="parent_id" ref="resource.menu_resource_config"/>
     <field name="sequence">11</field>
     <field name="web_icon" eval="False"/>
@@ -49,7 +13,7 @@
     <field name="action" ref="ir_exports_admin.action_ir_exports_line"/>
     <field name="active" eval="True"/>
     <field name="groups_id" eval="[(6, 0, [])]"/>
-    <field name="name">Exports Line</field>
+    <field name="name">Exports Line Templates</field>
     <field name="parent_id" ref="resource.menu_resource_config"/>
     <field name="sequence">12</field>
     <field name="web_icon" eval="False"/>

@@ -8,7 +8,7 @@
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
     "category": "Productivity",
-    "depends": [],
+    "depends": ["resource"],
     "website": "",
     "data": [
         "views/ir_exports.xml",
