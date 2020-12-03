@@ -36,4 +36,22 @@
     <field name="sequence">10</field>
     <field name="web_icon" eval="False"/>
   </record>
+  <record id="ir_exports_admin.menu_settings_resource_exports" model="ir.ui.menu">
+    <field name="action" ref="ir_exports_admin.action_ir_exports"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Exports Line</field>
+    <field name="parent_id" ref="resource.menu_resource_config"/>
+    <field name="sequence">11</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="ir_exports_admin.menu_settings_resource_exports_line" model="ir.ui.menu">
+    <field name="action" ref="ir_exports_admin.action_ir_exports_line"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Exports Line</field>
+    <field name="parent_id" ref="resource.menu_resource_config"/>
+    <field name="sequence">12</field>
+    <field name="web_icon" eval="False"/>
+  </record>
 </odoo>
