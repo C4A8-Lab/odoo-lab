@@ -11,10 +11,10 @@
     "depends": [
         "l10n_de_skr03",
         "account", 
+        "contacts",
         "sale_management", 
         "hr", 
         "hr_holidays", 
-        "hr_expense", 
         "odoo_microsoft_account",
         "sale_management", 
         "account_accountant", 
