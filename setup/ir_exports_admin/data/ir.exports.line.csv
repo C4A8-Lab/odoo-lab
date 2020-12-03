@@ -1,0 +1,7 @@
+"id","name","export_id/id"
+"ir_exports_line.ir_exports_1_export","id","ir_exports.ir_exports_1_export"
+"ir_exports_line.ir_exports_2_export","name","ir_exports.ir_exports_1_export"
+"ir_exports_line.ir_exports_3_export","resource","ir_exports.ir_exports_1_export"
+"ir_exports_line.ir_exports_line_1_export","id","ir_exports.ir.exports.line_2_export"
+"ir_exports_line.ir_exports_line_2_export","name","ir_exports.ir.exports.line_2_export"
+"ir_exports_line.ir_exports_line_3_export","export_id/id","ir_exports.ir.exports.line_2_export"
