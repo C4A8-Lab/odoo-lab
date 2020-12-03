@@ -4,7 +4,6 @@
         <field name="name">ir.exports.tree</field>
         <field name="model">ir.exports</field>
         <field name="arch" type="xml">
-            <?xml version="1.0"?>
             <tree string="Analytic Entries">
                 <field name="id"/>
                 <field name="name"/>
@@ -17,7 +16,6 @@
         <field name="name">ir.exports.tree</field>
         <field name="model">ir.exports.line</field>
         <field name="arch" type="xml">
-            <?xml version="1.0"?>
             <tree string="Analytic Entries">
                 <field name="id"/>
                 <field name="name"/>

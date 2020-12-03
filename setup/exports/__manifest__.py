@@ -12,7 +12,9 @@
     "website": "",
     "data": [
         "views/ir_exports.xml",
-        "views/ir_exports_line.xml"
+        "views/ir_exports_line.xml",
+        'data/ir_actions_act_window.xml',
+        'data/ir_ui_menu.xml'
     ],
     "installable": True,
     "auto_install": False,

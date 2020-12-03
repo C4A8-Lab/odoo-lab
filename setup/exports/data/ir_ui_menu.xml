@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="studio_customization.export_bd6a6961-5b1c-486f-9df7-802aeff64890" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" eval="False"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Export</field>
+    <field name="parent_id" eval="False"/>
+    <field name="sequence">10</field>
+    <field name="web_icon">fa fa-code,#f1c40f,#34495e</field>
+  </record>
+  <record id="studio_customization.export_exports_364e8111-b3fa-4161-bd75-30b838dbe9fa" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.exports_a8e03f58-c0fa-43ed-81cf-4485f35c7b48"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Exports</field>
+    <field name="parent_id" ref="studio_customization.export_bd6a6961-5b1c-486f-9df7-802aeff64890"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+  <record id="studio_customization.exports_line_a1bc928a-7c2b-471b-8b15-f056cb9ad1bf" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" eval="False"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Exports Line</field>
+    <field name="parent_id" eval="False"/>
+    <field name="sequence">10</field>
+    <field name="web_icon">fa fa-diamond,#f1c40f,#34495e</field>
+  </record>
+  <record id="studio_customization.exports_line_exports_88665f6f-8c12-4c36-8869-8361e8a75c7b" model="ir.ui.menu" context="{'studio': True}">
+    <field name="action" ref="studio_customization.exports_line_ee7b7f46-86e7-42c6-b86c-05a521cd181e"/>
+    <field name="active" eval="True"/>
+    <field name="groups_id" eval="[(6, 0, [])]"/>
+    <field name="name">Exports Line</field>
+    <field name="parent_id" ref="studio_customization.exports_line_a1bc928a-7c2b-471b-8b15-f056cb9ad1bf"/>
+    <field name="sequence">10</field>
+    <field name="web_icon" eval="False"/>
+  </record>
+</odoo>
