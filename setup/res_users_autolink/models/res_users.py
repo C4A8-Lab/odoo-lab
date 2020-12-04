@@ -12,10 +12,7 @@ class ResUsers(models.Model):
     @api.model
     def create(self, values):
         _logger.info("Event {module} create".format(module = self._inherit))  
-        _logger.info(values)
         result = super(ResUsers, self).create(values)
-        _logger.info("Verson 2")
-        _logger.info(result)
         if ('oauth_provider_id' in values and 'login' in values and result.oauth_provider_id.name == 'Microsoft OAuth2'):
             empl = self.env['hr.employee'].search([['work_email','=',values['login']]], limit=1)
             if (empl):
