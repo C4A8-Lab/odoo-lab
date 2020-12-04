@@ -9,6 +9,12 @@
     "license": "AGPL-3",
     "category": "Productivity",
     "depends": ["resource"],
+    "description": """
+# Export Admin
+This module adds the export template menu and export views to the odoo database.
+The menu is added to the developer resource menu.
+[Where to find.](res/navigation.png)
+    """,
     "website": "",
     "data": [
         "views/ir_exports.xml",
