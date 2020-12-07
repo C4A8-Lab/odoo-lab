@@ -6,8 +6,19 @@
         <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
         <field name="arch" type="xml">
             <field name="unit_amount" position="before">
-                <field name="time_start" widget="float_time" />
-                <field name="time_stop" widget="float_time" />
+                <field name="time_start" widget="float_time" decoration-danger="time_start &lt; 6" />
+                <field name="time_stop" widget="float_time" decoration-danger="time_stop &gt; 21" />
+            </field>
+        </field>
+    </record>
+    <record id="timesheet_view_form" model="ir.ui.view">
+        <field name="name">account.analytic.line.form</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="timesheet_grid.timesheet_view_form" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="time_start" widget="float_time" decoration-danger="time_start &lt; 6" />
+                <field name="time_stop" widget="float_time" decoration-danger="time_stop &gt; 21" />
             </field>
         </field>
     </record>

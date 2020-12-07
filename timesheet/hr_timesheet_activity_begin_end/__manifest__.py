@@ -8,7 +8,7 @@
     "author": "Camptocamp, Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Human Resources",
-    "depends": ["hr_timesheet"],
+    "depends": ["hr_timesheet", "timesheet_grid"],
     "website": "https://github.com/OCA/timesheet",
     "data": ["views/hr_analytic_timesheet.xml"],
     "installable": True,

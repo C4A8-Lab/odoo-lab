@@ -7,6 +7,8 @@ from datetime import timedelta
 from odoo import _, api, exceptions, fields, models
 from odoo.tools.float_utils import float_compare
 
+import logging
+_logger = logging.getLogger(__name__)
 
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
@@ -17,6 +19,7 @@ class AccountAnalyticLine(models.Model):
 
     @api.constrains("time_start", "time_stop", "unit_amount")
     def _check_time_start_stop(self):
+        _logger.info("Triggered _check_time_start_stop")
         for line in self:
             value_to_html = self.env["ir.qweb.field.float_time"].value_to_html
             start = timedelta(hours=line.time_start)

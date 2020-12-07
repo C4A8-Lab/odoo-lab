@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="report_layout" model="report.layout">
+            <field name="view_id" ref="gkgab_theme.external_layout"/>
+            <field name="image">/gkgab_theme/static/img/preview_din.png</field>
+            <field name="pdf">/gkgab_theme/static/pdf/preview_din.pdf</field>
+            <field name="name">glueckkanja-gab</field>
+        </record>
+    </data>
+</odoo>
