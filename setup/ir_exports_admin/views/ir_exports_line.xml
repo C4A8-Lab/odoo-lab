@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_ir_exports_line_tree" model="ir.ui.view">
+        <field name="name">ir.exports.tree</field>
+        <field name="model">ir.exports.line</field>
+        <field name="arch" type="xml">
+            <tree string="Analytic Entries">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="display_name"/>
+                <field name="export_id"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

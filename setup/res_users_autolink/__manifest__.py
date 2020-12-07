@@ -3,17 +3,14 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name": "Timesheet Activities - Begin/End Hours - Addon",
+    "name": "Link AAD users to employees",
     "version": "14.0.0.0.0",
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
-    "category": "Human Resources",
-    "depends": ["hr_timesheet_activity_begin_end"],
+    "category": "Productivity",
+    "depends": ["hr.employees"],
     "website": "",
     "data": [
-        "views/hr_analytic_timesheet.xml",
-        "views/hr_timesheet_calendar.xml",
-        "data/ir.actions.act_window.csv"
     ],
     "installable": True,
     "auto_install": False,
