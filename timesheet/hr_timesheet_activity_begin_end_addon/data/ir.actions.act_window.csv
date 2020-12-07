@@ -1,0 +1,3 @@
+"id","name","res_model","view_mode"
+"hr_timesheet.timesheet_action_all","All Timesheets","account.analytic.line","grid,calendar,tree,kanban"
+"hr_timesheet.act_hr_timesheet_line","My Timesheets","account.analytic.line","grid,calendar,tree,form"

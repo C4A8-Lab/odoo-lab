@@ -12,7 +12,8 @@
     "website": "",
     "data": [
         "views/hr_analytic_timesheet.xml",
-        "views/hr_timesheet_calendar.xml"
+        "views/hr_timesheet_calendar.xml",
+        "data/ir.actions.act_window.csv"
     ],
     "installable": True,
     "auto_install": False,
