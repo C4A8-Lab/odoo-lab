@@ -1,0 +1,1 @@
+This module contains the glueckkanja gab CI. (readme)
