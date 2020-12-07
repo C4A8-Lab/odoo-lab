@@ -8,7 +8,7 @@
     "author": "glueckkanja-gab",
     "license": "AGPL-3",
     "category": "Productivity",
-    "depends": ["hr.employees"],
+    "depends": ["hr"],
     "website": "",
     "data": [
     ],
