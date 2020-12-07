@@ -10,7 +10,6 @@
     "depends": [
         "l10n_de"    
     ],
-    "description": "This module contains the glueckkanja gab CI.",
     "data": [
         "report/report.xml",
         "data/report_layout.xml",
