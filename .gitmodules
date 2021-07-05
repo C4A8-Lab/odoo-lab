@@ -1,0 +1,3 @@
+[submodule "modules/module-helpdesk-addon"]
+	path = modules/module-helpdesk-addon
+	url = git@github.com:c4a8-odoo/module-helpdesk-addon.git
